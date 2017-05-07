@@ -14,13 +14,38 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d(TAG,"onCreate");
 
     }
     public void sayHello(View v){
-        Log.d(TAG, "ssyHello: ssss");
+        Log.d(TAG, "ssyHello");
         Intent newIntent = new Intent(this,Welcome.class);
         String buff = ((EditText)findViewById(R.id.myEditText)).getText().toString();
         newIntent.putExtra(EXTRA_STRING_USER, buff);
         startActivity(newIntent);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG,"onStart");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG,"onDestroy");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG,"onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG,"onPause");
     }
 }
