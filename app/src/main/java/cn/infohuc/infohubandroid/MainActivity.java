@@ -30,6 +30,10 @@ public class MainActivity extends Activity {
                 sayHi(v);
             }
         });
+
+        if (savedInstanceState != null) {
+            myTextView.setText(savedInstanceState.getString("greeting"));
+        }
     }
 
     public void sayHi(View v){
@@ -42,6 +46,12 @@ public class MainActivity extends Activity {
         String buff = ((EditText)findViewById(R.id.myEditText)).getText().toString();
         newIntent.putExtra(EXTRA_STRING_USER, buff);
         startActivity(newIntent);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("greeting", myTextView.getText().toString());
     }
 
     @Override
