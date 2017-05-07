@@ -20,6 +20,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:id="@+id/myEditText"
+        android:inputType="phone"
         android:hint="@string/enter_your_text"
         android:layout_height="wrap_content" />
 
