@@ -16,6 +16,6 @@ public class Welcome extends AppCompatActivity {
         String name = getIntent().getStringExtra(MainActivity.EXTRA_STRING_USER);
         Log.d(TAG, "onCreate: "+name);
         TextView myTextView = (TextView) findViewById(R.id.welTextView);
-        myTextView.setText(name);
+        myTextView.setText(String.format(getString(R.string.greeting), name));
     }
 }

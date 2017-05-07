@@ -2,4 +2,5 @@
     <string name="app_name">InfohubAndroid</string>
     <string name="sayHello">sayHello</string>
     <string name="enter_your_text">Enter your text</string>
+    <string name="greeting">hello %1$s!</string>
 </resources>
