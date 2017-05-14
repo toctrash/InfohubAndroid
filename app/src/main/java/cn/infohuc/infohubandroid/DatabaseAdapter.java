@@ -16,16 +16,16 @@ class DatabaseAdapter {
     private DatabaseHelper dbHelper;
     private SQLiteDatabase database;
 
-    public DatabaseAdapter(Context context) {
+    DatabaseAdapter(Context context) {
         dbHelper = new DatabaseHelper(context.getApplicationContext());
     }
 
-    public DatabaseAdapter open() {
+    DatabaseAdapter open() {
         database = dbHelper.getWritableDatabase();
         return this;
     }
 
-    public void close() {
+    void close() {
         dbHelper.close();
     }
 
@@ -35,7 +35,7 @@ class DatabaseAdapter {
         return database.query("names", colums, null, null, null, null, null);
     }
 
-    public List<String> getAllNames() {
+    List<String> getAllNames() {
         ArrayList<String> names = new ArrayList<>();
         Cursor cursor = getAllEntries();
         if (cursor.moveToFirst()) {
@@ -47,31 +47,31 @@ class DatabaseAdapter {
         return names;
     }
 
-    public boolean exists(String name) {
-        Cursor cursor = database.rawQuery("select name froms names where name=?", new String[]{name});
+    boolean exists(String name) {
+        Cursor cursor = database.rawQuery("select name from names where name=?", new String[]{name});
         boolean result = cursor.getCount() >= 1;
         cursor.close();
         return result;
     }
 
-    public long insertName(String name) {
+    long insertName(String name) {
         ContentValues values = new ContentValues();
         values.put("name", name);
         return database.insert("names", null, values);
     }
 
-    public int deleteName(String name) {
+    int deleteName(String name) {
         String whereClause = "name=?";
         String[] whereArgs = new String[1];
         whereArgs[0] = name;
         return database.delete("names", whereClause, whereArgs);
     }
 
-    public int deleteAllNames() {
+    int deleteAllNames() {
         return database.delete("names", null, null);
     }
 
-    public int updateName(String name) {
+    int updateName(String name) {
         String whereClause = "name=?";
         String[] whereArgs = new String[1];
         whereArgs[0] = name;
