@@ -5,4 +5,6 @@
     <string name="greeting">hello %1$s!</string>
     <string name="hiing">Hi,%1$s</string>
     <string name="sayHi">sayHi</string>
+    <string name="internet_carlos_ray_database">Internet Carlos Ray Database</string>
+    <string name="get_joke">Get Joke</string>
 </resources>
